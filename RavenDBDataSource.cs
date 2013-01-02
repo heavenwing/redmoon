@@ -18,12 +18,6 @@ namespace eBalance_IE_Extensions.EntryDev
         private IDocumentStore _store;
         private DelayEvent delayEvent;
 
-        public RavenDBDataSource(IDocumentStore store)
-        {
-            _store = store;
-            this.PageSize = 20;
-        }
-
         public static List<T> LoadAll(IDocumentSession session, int pageSize)
         {
             var all = new List<T>();
@@ -40,8 +34,10 @@ namespace eBalance_IE_Extensions.EntryDev
         }
 
         public RavenDBDataSource(IDocumentStore store, BindingNavigator bn, BindingSource bs)
-            : this(store)
         {
+            _store = store;
+            this.PageSize = 20;
+
             _bn = bn;
             _bs = bs;
 
